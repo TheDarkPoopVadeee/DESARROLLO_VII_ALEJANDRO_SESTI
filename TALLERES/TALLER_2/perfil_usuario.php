@@ -6,7 +6,9 @@
     define("OCUPACION", "estudiante");
 
    echo $presentacion1 = "Hola, mi nombre es " . $nombre_completo . " y tengo " . $edad . " años.";
-   echo $presentacion2 = "Con correo". $correo . "y numero celular". $telefono . "ocupacion". OCUPACION;
+   echo "<br>";
+   echo $presentacion2 = "Con correo ". $correo . " y numero celular ". $telefono . " ocupacion ". OCUPACION;
+   echo "<br>";
 
     echo "<br>Información de debugging:<br>";
     var_dump($nombre_completo);
