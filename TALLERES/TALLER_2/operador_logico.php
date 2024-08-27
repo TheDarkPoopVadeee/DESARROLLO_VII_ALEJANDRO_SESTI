@@ -49,4 +49,3 @@ echo "false && true = " . var_export($result, true) . " (y no se evalúa)<br>";
 $result = $x || $y; // $y se evalúa porque $x es falso
 echo "false || true = " . var_export($result, true) . " (y se evalúa)<br>";
 ?>
-    
