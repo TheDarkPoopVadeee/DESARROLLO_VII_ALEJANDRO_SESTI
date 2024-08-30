@@ -13,7 +13,7 @@ echo "</br>JSON de persona decodificado como array:</br>";
 print_r($persona);
 
 // Ejercicio: Decodifica el JSON de tu película favorita del ejercicio anterior
-$jsonPelicula = '{"titulo":"Tu película","director":"Director","año":2000,"actores":["Actor 1","Actor 2","Actor 3"]}';
+$jsonPelicula = '{"Jurassic Park":"Lost World","director":"Steven Spielberg","año":1998,"actores":["Sam Nill","BD Wong","Jeff Goldum"]}';
 $peliculaFavorita = json_decode($jsonPelicula, true);
 echo "</br>Información de tu película favorita decodificada:</br>";
 print_r($peliculaFavorita);
