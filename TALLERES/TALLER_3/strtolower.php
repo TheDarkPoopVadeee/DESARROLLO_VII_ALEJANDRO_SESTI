@@ -38,7 +38,7 @@ print_r($lenguajesMinusculas);
 
 // Desafío: Crea una función que convierta a minúsculas solo la primera letra de cada palabra
 function primerLetraMinuscula($frase) {
-    $palabras = explode("Todo Bien ", $frase);
+    $palabras = explode(" ", $frase);
     $palabrasModificadas = array_map(function($palabra) {
         return strtolower(substr($palabra, 0, 1)) . substr($palabra, 1);
     }, $palabras);
