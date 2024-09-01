@@ -25,8 +25,8 @@ echo "</br>Frutas originales: " . implode(", ", $frutas) . "</br>";
 echo "Frutas en mayúsculas: " . implode(", ", $frutasMayusculas) . "</br>";
 
 // Bonus: Usar array_map() con múltiples arrays
-$nombres = ["Ana", "Carlos", "Beatriz"];
-$apellidos = ["García", "Rodríguez", "López"];
+$nombres = ["Ana", "Carlos", "Beatriz","Chris","Raul"];
+$apellidos = ["García", "Rodríguez", "López","Andrade","Dominguez"];
 $nombresCompletos = array_map(function($nombre, $apellido) {
     return $nombre . " " . $apellido;
 }, $nombres, $apellidos);
