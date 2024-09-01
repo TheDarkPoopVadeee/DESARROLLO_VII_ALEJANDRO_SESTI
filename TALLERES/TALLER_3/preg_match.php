@@ -1,7 +1,7 @@
 
 <?php
 // Ejemplo básico de preg_match()
-$texto = "El código postal es 12345";
+$texto = "El código postal es 5879";
 $patron = "/\d{5}/"; // Busca 5 dígitos consecutivos
 if (preg_match($patron, $texto, $coincidencias)) {
     echo "Código postal encontrado: {$coincidencias[0]}</br>";
@@ -15,8 +15,8 @@ function validarEmail($email) {
     return preg_match($patron, $email);
 }
 
-$email1 = "usuario@example.com";
-$email2 = "usuario@.com";
+$email1 = "alejandro@example.com";
+$email2 = "sesti@.com";
 echo "¿'{$email1}' es un email válido? " . (validarEmail($email1) ? "Sí" : "No") . "</br>";
 echo "¿'{$email2}' es un email válido? " . (validarEmail($email2) ? "Sí" : "No") . "</br>";
 
