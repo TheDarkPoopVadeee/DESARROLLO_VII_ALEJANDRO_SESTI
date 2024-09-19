@@ -1,4 +1,3 @@
-
 <?php
 require_once 'Libro.php';
 require_once 'LibroDigital.php';
@@ -11,6 +10,11 @@ class Biblioteca {
     }
 
     public function listarLibros() {
+        if (empty($this->libros)) {
+            echo "No hay libros en la biblioteca.\n";
+            return;
+        }
+
         foreach ($this->libros as $libro) {
             echo $libro->obtenerInformacion() . "\n";
             echo "Disponible: " . ($libro->estaDisponible() ? "Sí" : "No") . "\n\n";
@@ -51,14 +55,21 @@ echo "Listado inicial de libros:\n";
 $biblioteca->listarLibros();
 
 echo "Prestando 'El principito'...\n";
-$biblioteca->prestarLibro("El principito");
+if ($biblioteca->prestarLibro("El principito")) {
+    echo "'El principito' ha sido prestado con éxito.\n";
+} else {
+    echo "No se pudo prestar 'El principito'.\n";
+}
 
 echo "Listado después de prestar:\n";
 $biblioteca->listarLibros();
 
 echo "Devolviendo 'El principito'...\n";
-$biblioteca->devolverLibro("El principito");
+if ($biblioteca->devolverLibro("El principito")) {
+    echo "'El principito' ha sido devuelto con éxito.\n";
+} else {
+    echo "No se pudo devolver 'El principito'.\n";
+}
 
 echo "Listado final:\n";
 $biblioteca->listarLibros();
-        
