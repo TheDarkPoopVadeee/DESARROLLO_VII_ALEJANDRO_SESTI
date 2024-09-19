@@ -2,17 +2,17 @@
 require_once 'Empleado.php';
 require_once 'Evaluable.php';
 
+// Clase Gerente que hereda de Empleado e implementa Evaluable
 class Gerente extends Empleado implements Evaluable {
     private $departamento;
-    private $bono;
 
-    public function __construct($nombre, $idEmpleado, $salarioBase, $departamento) {
-        parent::__construct($nombre, $idEmpleado, $salarioBase);
+    // Constructor para inicializar las propiedades
+    public function __construct($nombre, $id, $salarioBase, $departamento) {
+        parent::__construct($nombre, $id, $salarioBase);
         $this->departamento = $departamento;
-        $this->bono = 0; // Inicialmente sin bono
     }
 
-    // Getters y Setters
+    // Método getter y setter para departamento
     public function getDepartamento() {
         return $this->departamento;
     }
@@ -21,25 +21,15 @@ class Gerente extends Empleado implements Evaluable {
         $this->departamento = $departamento;
     }
 
-    public function getBono() {
-        return $this->bono;
-    }
-
-    public function setBono($bono) {
-        $this->bono = $bono;
-    }
-
-    // Métodos específicos
+    // Método para asignar un bono
     public function asignarBono($monto) {
-        $this->bono = $monto;
+        $this->salarioBase += $monto;
     }
 
-    // Implementación del método de la interfaz
+    // Implementación del método evaluarDesempenio de la interfaz Evaluable
     public function evaluarDesempenio() {
-        return "Evaluación de desempeño del gerente: Excelente.";
-    }
-
-    public function __toString() {
-        return parent::__toString() . ", Departamento: $this->departamento, Bono: $this->bono";
+        // Lógica específica para evaluar a un gerente
+        return "Evaluación del desempeño del gerente " . $this->nombre;
     }
 }
+?>

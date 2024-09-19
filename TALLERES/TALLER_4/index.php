@@ -6,23 +6,24 @@ require_once 'Evaluable.php';
 require_once 'Empresa.php';
 
 // Crear instancias de empleados
-$gerente = new Gerente("Juan Pérez", "G123", 5000, "TI");
-$gerente->asignarBono(1000);
+$gerente = new Gerente("Juan Pérez", "G001", 5000, "Ventas");
+$desarrollador = new Desarrollador("Ana Gómez", "D001", 4000, "PHP", "Intermedio");
 
-$desarrollador = new Desarrollador("Ana Gómez", "D456", 3000, "PHP", "Senior");
-
-// Crear una instancia de empresa y agregar empleados
+// Crear una instancia de la empresa
 $empresa = new Empresa();
+
+// Agregar empleados a la empresa
 $empresa->agregarEmpleado($gerente);
 $empresa->agregarEmpleado($desarrollador);
 
-// Listar empleados
+// Listar todos los empleados
 echo "Listado de empleados:\n";
 $empresa->listarEmpleados();
 
-// Calcular nómina total
-echo "Nómina total: " . $empresa->calcularNominaTotal() . "\n";
+// Calcular la nómina total
+echo "Nómina total: $" . $empresa->calcularNominaTotal() . "\n";
 
-// Evaluar desempeño
+// Evaluar desempeño de los empleados
 echo "Evaluaciones de desempeño:\n";
 $empresa->evaluarDesempenio();
+?>

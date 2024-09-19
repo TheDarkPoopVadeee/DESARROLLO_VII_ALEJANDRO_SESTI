@@ -1,43 +1,43 @@
 <?php
 
+// Clase base para los empleados
 class Empleado {
     protected $nombre;
-    protected $idEmpleado;
+    protected $id;
     protected $salarioBase;
 
-    public function __construct($nombre, $idEmpleado, $salarioBase) {
+    // Constructor para inicializar las propiedades
+    public function __construct($nombre, $id, $salarioBase) {
         $this->nombre = $nombre;
-        $this->idEmpleado = $idEmpleado;
+        $this->id = $id;
         $this->salarioBase = $salarioBase;
     }
 
-    // Getters
+    // Métodos getter y setter para nombre
     public function getNombre() {
         return $this->nombre;
     }
 
-    public function getIdEmpleado() {
-        return $this->idEmpleado;
-    }
-
-    public function getSalarioBase() {
-        return $this->salarioBase;
-    }
-
-    // Setters
     public function setNombre($nombre) {
         $this->nombre = $nombre;
     }
 
-    public function setIdEmpleado($idEmpleado) {
-        $this->idEmpleado = $idEmpleado;
+    // Métodos getter y setter para ID
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    // Métodos getter y setter para salario base
+    public function getSalarioBase() {
+        return $this->salarioBase;
     }
 
     public function setSalarioBase($salarioBase) {
         $this->salarioBase = $salarioBase;
     }
-
-    public function __toString() {
-        return "Nombre: $this->nombre, ID: $this->idEmpleado, Salario Base: $this->salarioBase";
-    }
 }
+?>
