@@ -2,10 +2,30 @@
 require_once 'Prestable.php';
 
 class Libro implements Prestable {
-    // ... (propiedades y métodos anteriores) ...
+    // Propiedades de la clase
+    private $titulo;
+    private $autor;
+    private $anioPublicacion;
+    private $disponible;
 
-    private $disponible = true;
+    /**
+     * Constructor para inicializar las propiedades del libro.
+     */
+    public function __construct($titulo, $autor, $anioPublicacion) {
+        $this->titulo = $titulo;
+        $this->autor = $autor;
+        $this->anioPublicacion = $anioPublicacion;
+        $this->disponible = true;
+    }
 
+    /**
+     * Método para obtener la información del libro.
+     */
+    public function obtenerInformacion() {
+        return "Título: " . $this->titulo . ", Autor: " . $this->autor . ", Año: " . $this->anioPublicacion;
+    }
+
+    // Implementación de los métodos de la interfaz Prestable
     public function prestar() {
         if ($this->disponible) {
             $this->disponible = false;
@@ -31,4 +51,4 @@ $libro->prestar();
 echo "Disponible después de prestar: " . ($libro->estaDisponible() ? "Sí" : "No") . "\n";
 $libro->devolver();
 echo "Disponible después de devolver: " . ($libro->estaDisponible() ? "Sí" : "No") . "\n";
-        
+?>
