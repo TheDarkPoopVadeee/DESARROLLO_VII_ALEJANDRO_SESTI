@@ -59,4 +59,25 @@ foreach ($conteoCalificaciones as $letra => $cantidad) {
 // (aquellos con un promedio de 90 o más).
 // Tu código aquí
 
+// 9. Función para encontrar el producto con el mayor valor total en inventario
+function productoMayorValorTotal($inv) {
+    $productoMayor = "";
+    $mayorValor = 0;
+
+    foreach ($inv as $producto => $info) {
+        $valorTotalProducto = $info['cantidad'] * $info['precio'];
+        if ($valorTotalProducto > $mayorValor) {
+            $mayorValor = $valorTotalProducto;
+            $productoMayor = $producto;
+        }
+    }
+
+    // Retorna el nombre del producto y su valor total
+    return ["producto" => $productoMayor, "valor_total" => $mayorValor];
+}
+
+// 10. Mostrar el producto con el mayor valor total en inventario
+$productoMayor = productoMayorValorTotal($inventario);
+echo "\nProducto con el mayor valor total en inventario: {$productoMayor['producto']}, Valor Total: \${$productoMayor['valor_total']}\n";
+
 ?>
