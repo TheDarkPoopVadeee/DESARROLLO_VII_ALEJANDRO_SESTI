@@ -116,23 +116,63 @@ echo "Libro más reciente: {$libroMasReciente['titulo']} ({$libroMasReciente['a�
 // 10. TAREA: Implementa una función de búsqueda que permita buscar libros por título o autor
 // La función debe ser capaz de manejar búsquedas parciales y no debe ser sensible a mayúsculas/minúsculas
 function buscarLibros($biblioteca, $termino) {
-    // Tu código aquí
+    $termino = strtolower($termino); // Convertir el término a minúsculas para una búsqueda no sensible a mayúsculas/minúsculas
+    return array_filter($biblioteca, function($libro) use ($termino) {
+        return strpos(strtolower($libro['titulo']), $termino) !== false || 
+               strpos(strtolower($libro['autor']), $termino) !== false;
+    });
 }
 
+// Ejemplo de uso de la función de búsqueda
 // Ejemplo de uso de la función de búsqueda (descomenta para probar)
 // $resultadosBusqueda = buscarLibros($biblioteca, "quijote");
 // echo "Resultados de búsqueda para 'quijote':\n";
 // imprimirBiblioteca($resultadosBusqueda);
 
+$resultadosBusqueda = buscarLibros($biblioteca, "quijote");
+echo "Resultados de búsqueda para 'quijote':\n";
+imprimirBiblioteca($resultadosBusqueda);
+
 // 11. TAREA: Crea una función que genere un reporte de la biblioteca
 // El reporte debe incluir: número total de libros, número de libros prestados,
 // número de libros por género, y el autor con más libros en la biblioteca
+
 function generarReporteBiblioteca($biblioteca) {
-    // Tu código aquí
+    $reporte = [
+        'total_libros' => count($biblioteca),
+        'libros_prestados' => count(array_filter($biblioteca, function($libro) {
+            return $libro['prestado'];
+        })),
+        'libros_por_genero' => [],
+        'autor_con_mas_libros' => ''
+    ];
+
+    // Calcular la cantidad de libros por género
+    foreach ($biblioteca as $libro) {
+        if (!isset($reporte['libros_por_genero'][$libro['genero']])) {
+            $reporte['libros_por_genero'][$libro['genero']] = 0;
+        }
+        $reporte['libros_por_genero'][$libro['genero']]++;
+    }
+
+    // Contar libros por autor
+    $autoresContador = array_count_values(array_column($biblioteca, 'autor'));
+    
+    // Encontrar el autor con más libros
+    $reporte['autor_con_mas_libros'] = array_search(max($autoresContador), $autoresContador);
+
+    return $reporte;
 }
 
-// Ejemplo de uso de la función de reporte (descomenta para probar)
+// Ejemplo de uso de la función de reporte// Ejemplo de uso de la función de reporte (descomenta para probar)
 // echo "Reporte de la Biblioteca:\n";
 // print_r(generarReporteBiblioteca($biblioteca));
+
+
+echo "Reporte de la Biblioteca:\n";
+print_r(generarReporteBiblioteca($biblioteca));
+
+
+
 
 ?>
