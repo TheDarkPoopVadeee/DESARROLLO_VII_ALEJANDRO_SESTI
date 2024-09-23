@@ -10,7 +10,7 @@ $inventario = [
 // 2. Función para mostrar el inventario
 function mostrarInventario($inv) {
     foreach ($inv as $producto => $info) {
-        echo "$producto: {$info['cantidad']} unidades, Precio: ${$info['precio']}\n";
+        echo "$producto: {$info['cantidad']} unidades, Precio: \${$info['precio']}\n";
     }
 }
 
@@ -54,5 +54,27 @@ echo "\nValor total del inventario: $" . valorTotalInventario($inventario) . "\n
 // TAREA: Crea una función que encuentre y retorne el producto con el mayor valor total en inventario
 // (cantidad * precio). Muestra el resultado.
 // Tu código aquí
+
+// 9. Función para encontrar el producto con el mayor valor total en inventario
+function productoMayorValorTotal($inv) {
+    $productoMayor = "";
+    $mayorValor = 0;
+
+    foreach ($inv as $producto => $info) {
+        $valorTotalProducto = $info['cantidad'] * $info['precio'];
+        if ($valorTotalProducto > $mayorValor) {
+            $mayorValor = $valorTotalProducto;
+            $productoMayor = $producto;
+        }
+    }
+
+    // Retorna el nombre del producto y su valor total
+    return ["producto" => $productoMayor, "valor_total" => $mayorValor];
+}
+
+// 10. Mostrar el producto con el mayor valor total en inventario
+$productoMayor = productoMayorValorTotal($inventario);
+echo "\nProducto con el mayor valor total en inventario: {$productoMayor['producto']}, Valor Total: \${$productoMayor['valor_total']}\n";
+
 
 ?>
