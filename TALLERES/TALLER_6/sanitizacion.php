@@ -19,6 +19,10 @@ function sanitizarGenero($genero) {
     return filter_var(trim($genero), FILTER_SANITIZE_STRING);
 }
 
+function sanitizarFechaNacimiento($fecha) {
+    return htmlspecialchars(trim($fecha)); // Escapa caracteres especiales
+}
+
 function sanitizarIntereses($intereses) {
     return array_map(function($interes) {
         return filter_var(trim($interes), FILTER_SANITIZE_STRING);

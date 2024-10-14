@@ -20,6 +20,11 @@ function validarGenero($genero) {
     return in_array($genero, $generosValidos);
 }
 
+function validarFechaNacimiento($fecha) {
+    $fechaObj = DateTime::createFromFormat('Y-m-d', $fecha);
+    return $fechaObj && $fechaObj->format('Y-m-d') === $fecha;
+}
+
 function validarIntereses($intereses) {
     $interesesValidos = ['deportes', 'musica', 'lectura'];
     return !empty($intereses) && count(array_intersect($intereses, $interesesValidos)) === count($intereses);

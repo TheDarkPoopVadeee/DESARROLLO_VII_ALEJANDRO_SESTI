@@ -8,6 +8,8 @@
 <body>
     <h2>Formulario de Registro Avanzado</h2>
     <form action="procesar.php" method="POST" enctype="multipart/form-data">
+        
+        
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
 
@@ -26,6 +28,10 @@
             <option value="femenino">Femenino</option>
             <option value="otro">Otro</option>
         </select><br><br>
+        
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+        <br>
 
         <label>Intereses:</label><br>
         <input type="checkbox" id="deportes" name="intereses[]" value="deportes">
@@ -43,6 +49,8 @@
 
         <input type="submit" value="Enviar">
         <input type="reset" value="Limpiar">
+
+        
     </form>
 </body>
 </html>

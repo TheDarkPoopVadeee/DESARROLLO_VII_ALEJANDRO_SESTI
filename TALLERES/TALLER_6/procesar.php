@@ -55,4 +55,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "Acceso no permitido.";
 }
+
+if (empty($errores)) {
+    // Leer registros existentes
+    $registros = [];
+    if (file_exists('registros.json')) {
+        $registros = json_decode(file_get_contents('registros.json'), true);
+    }
+
+    // Agregar nuevo registro
+    $registros[] = $datos;
+
+    // Guardar en el archivo
+    file_put_contents('registros.json', json_encode($registros, JSON_PRETTY_PRINT));
+}
 ?>
